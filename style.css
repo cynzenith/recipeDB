@@ -1,0 +1,60 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    width: 70%;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+#results {
+    margin-top: 20px;
+}
+
+#suggestions ul, #popularRecipes ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+#suggestions ul li, #popularRecipes ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+#suggestions ul li a {
+    color: blue;
+    text-decoration: none;
+}
+
+#suggestions ul li a:hover {
+    text-decoration: underline;
+}
