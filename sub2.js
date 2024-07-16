@@ -9,30 +9,6 @@ let recipes = []
 // 전체 레시피 url
 let url_object = new URL(`https://charming-cactus-400740.netlify.app/api/${API_KEY}/${serviceId}/${dataType}/${startIdx}/${endIdx}`);
 
-const RecipeTypes = document.querySelectorAll('.RecipeTypes button');
-// console.log(RecipeTypes)
-
-const Ingredients = document.querySelectorAll('.Ingredients button');
-// console.log(ingredients)
-
-RecipeTypes.forEach(RecipeType=> RecipeType.addEventListener("click",(event)=>getRecipeByRecipeType(event)))
-Ingredients.forEach(Ingredient=> Ingredient.addEventListener("click",(event)=>getRecipeByIngredient(event)))
-
-const getRecipeByRecipeType = async(event) => {
-    const RecipeType = event.target.textContent
-    const encodedRecipeType = RecipeType.toString();
-    console.log(RecipeType)
-    url_object = new URL(`https://charming-cactus-400740.netlify.app/api/${API_KEY}/${serviceId}/${dataType}/${startIdx}/${endIdx}/RCP_PAT2=${encodedRecipeType}`);
-    await getRecipes()
-}
-
-const getRecipeByIngredient = async(event) => {
-    const Ingredient = event.target.textContent
-    console.log(Ingredient)
-    url_object = new URL(`https://charming-cactus-400740.netlify.app/api/${API_KEY}/${serviceId}/${dataType}/${startIdx}/${endIdx}/RCP_PARTS_DTLS=${Ingredient}`);
-    await getRecipes()
-}
-
 // 전체 레시피 데이터를 가져오는 함수
 const getRecipes = async() => {
     const response = await fetch(url_object)
@@ -80,7 +56,6 @@ const render = () => {
                 <div class="col-lg-8">
                     <h2>${item.RCP_NM}</h2>
                     <div>${item.RCP_PAT2}</div>
-                    <div>${item.RCP_WAY2}</div>
                     <div>${item.RCP_PARTS_DTLS}</div>
                     <div>${manualStepsHTML}</div> <!-- 실제 존재하는 단계만 추가 -->
                 </div>
