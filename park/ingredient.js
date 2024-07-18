@@ -154,6 +154,3 @@ function handleKeyDown(event) {
 
 getRecipes()
 // getRecipesName()
-
-
-

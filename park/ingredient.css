@@ -1,0 +1,41 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif; /* 원하는 기본 글꼴 설정 */
+}
+
+/* ------------------------------------------------ */
+.RecipeTypes {    
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;                 /* 창 크기에 따라 범위 안에 있도록 감싸준다. 즉, 창크기가 작아지면 한줄 메뉴가 2~3줄로 줄어들면서 감싼다 */
+    /* border-top:1px solid #ebebeb; */
+    padding-top: 5px;
+}
+
+.Ingredients {    
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;                 /* 창 크기에 따라 범위 안에 있도록 감싸준다. 즉, 창크기가 작아지면 한줄 메뉴가 2~3줄로 줄어들면서 감싼다 */
+    border-bottom: 4px double black;
+    padding-bottom: 20px;
+}
+
+.Ingredients button,
+.RecipeTypes button  {
+    border: none;
+    background: none;  /* 버튼의 배경을 없애 */
+    margin: 5px;
+}
+
+.Ingredients button:hover,
+.RecipeTypes button:hover{
+    background-color: beige;
+}
