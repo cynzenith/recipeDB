@@ -11,7 +11,7 @@ let selectedIngredients = [];
 let url_object = new URL(`https://charming-cactus-400740.netlify.app/api/${API_KEY}/${serviceId}/${dataType}/${startIdx}/${endIdx}/RCP_NM=가`);
 
 const RecipeTypes = document.querySelectorAll('.RecipeTypes button'); // console.log(RecipeTypes)
-const Ingredients = document.querySelectorAll('.Ingredients button'); // console.log(ingredients)
+const Ingredients = document.querySelectorAll('.ingredient-bar button'); // console.log(ingredients)
 
 RecipeTypes.forEach(RecipeType=> RecipeType.addEventListener("click",(event)=>getRecipeByRecipeType(event)))
 Ingredients.forEach(Ingredient=> Ingredient.addEventListener("click",(event)=>getRecipeByIngredient(event)))
