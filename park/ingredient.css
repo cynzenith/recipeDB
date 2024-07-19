@@ -52,7 +52,7 @@ html, body {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start; /* 버튼이 여러 줄일 때, 왼쪽 정렬 */
-    gap: px;
+    /* gap: px; */
 }
 
 .ingredient-bar button {
