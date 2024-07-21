@@ -24,9 +24,16 @@
                 <section class="div-ingredient">
                     <div class="sub-ingredient">
                         <h1> our Ingredients </h1>
-                        <p>냉장고에 있는 재료를 가지고 만들 수 있는 레시피를 검색해보세요.</p>
+                        <p>식재료에 관한 다양한 레시피를 검색해보세요.</p>
                     </div>
 
+                    <!-- 검색창 -->
+                    <form class="custom-search-form d-flex" role="search" >
+                        <input id="search-input" class="form-control me-2" type="search" placeholder="" aria-label="Search" onkeypress ="handleKeyDown(event)">
+                        <button id="search-button" class="btn btn-outline-success" type="button"  onclick="recipeByKeyword()">Search</button>
+                    </form>
+
+                    <!-- 메뉴 그리드 -->
                     <div class="ingredient-bar">
                         <button>달걀</button>
                         <button>두부</button>
@@ -34,17 +41,11 @@
                         <button>버터</button>
                         <button>꿀</button>
                         <button>우유</button>
-                        <button>설탕</button>
-                        <button>소금</button>
                         <button>간장</button>
                         <button>후추</button>
                         <button>다진마늘</button>
                         <button>고춧가루</button>
-                        <button>참기름</button>
                         <button>식초</button>
-                        <button>흰후추</button>
-                        <button>올리브오일</button>
-                        <button>후춧가루</button>
                         <button>올리브유</button>
                         <button>맛간장</button>
                         <button>된장</button>
@@ -66,23 +67,17 @@
                         <button>파</button>
                         <button>미나리</button>
                         <button>시금치</button>
-                        <button>청고추</button>
                         <button>표고버섯</button>
                         <button>애호박</button>
                         <button>고구마</button>
                         <button>브로콜리</button>
                         <button>깻잎</button>
-                        <button>홍고추</button>
-                        <button>홍피망</button>
-                        <button>실파</button>
                         <button>사과</button>
                         <button>레몬즙</button>
                         <button>배</button>
                         <button>레몬</button>
                         <button>통깨</button>
                         <button>다진마늘</button>
-                        <button>마늘다진것</button>
-                        <button>식용유</button>
                         <button>호두</button>
                         <button>생강</button>
                         <button>찹쌀가루</button>
@@ -91,11 +86,9 @@
                         <button>생크림</button>
                         <button>생강청</button>
                         <button>단호박</button>
-                        <button>밥</button>
                         <button>부추</button>
                         <button>바질</button>
                         <button>생강즙</button>
-                        <button>아몬드</button>
                     </div>
                 </section>
                 
@@ -111,7 +104,7 @@
                     </div> -->
                     
                 </section>
-                <section id="recipe-board">
+                <section id="recipe-board" class="board-center">
                     <div class="row recipe">
                     </div>
                 </section>
