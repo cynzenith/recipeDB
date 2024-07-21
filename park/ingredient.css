@@ -71,21 +71,29 @@ body {
 }
 
 .ingredient-bar button, .RecipeTypes button {
-  display: flex;
+    display: flex;
   align-items: center;
   justify-content: center;
   width: 80px; /* 버튼의 넓이를 픽셀 단위로 고정 */
   height: 40px;
-
-  background-color: rgb(255, 255, 255);
-  color: #4e4d4d;
-  /* 윤승근 폰트 사이즈 수정 */
+  background-color: rgb(255, 255, 255); /* 기본 배경 색상 */
+  color: rgb(147, 112, 98); /* 기본 텍스트 색상 */
   font-size: 14px;
   font-weight: 700;
-  height: 40px;
-  white-space: nowrap; /*텍스트 줄바꿈X */
-
-  border: 1px solid #e2cec1; /* 갈색 테두리 설정 */
+  border: 1px solid rgb(147, 112, 98); /* 기본 경계선 색상 */
+  border-radius: 4px; /* 버튼 모서리 둥글게 */
+  margin: 5px; /* 버튼 간의 여백 */
+  transition: all 0.3s ease; /* 부드러운 호버 효과 */
+}
+.RecipeTypes button:hover {
+  background-color: rgb(147, 112, 98); /* 호버 상태에서 배경 색상 */
+  color: #fff; /* 호버 상태에서 텍스트 색상 */
+  border-color: rgb(147, 112, 98); /* 호버 상태에서 경계선 색상 */
+}
+.RecipeTypes button.active {
+  background-color: rgb(147, 112, 98); /* 활성화 상태에서 배경 색상 */
+  color: #fff; /* 활성화 상태에서 텍스트 색상 */
+  border-color: rgb(147, 112, 98); /* 활성화 상태에서 경계선 색상 */
 }
 
 .ingredient-bar button:hover {
@@ -170,6 +178,35 @@ body {
   justify-content: center; 
   margin-top: 20px; 
 }
+
+
+
+/* 페이지 버튼 기본 스타일 */
+.page-item .page-link {
+  color: rgb(147, 112, 98); /* 기본 텍스트 색상 */
+  border-color: rgb(147, 112, 98); /* 기본 경계선 색상 */
+}
+
+/* 페이지 버튼 호버 상태 */
+.page-item .page-link:hover {
+  color: #fff; /* 호버 상태에서 텍스트 색상 */
+  background-color: rgb(147, 112, 98); /* 호버 상태에서 배경 색상 */
+  border-color: rgb(147, 112, 98); /* 호버 상태에서 경계선 색상 */
+}
+
+/* 페이지 버튼 활성화 상태 */
+.page-item.active .page-link {
+  color: #fff; /* 활성화 상태에서 텍스트 색상 */
+  background-color: rgb(147, 112, 98); /* 활성화 상태에서 배경 색상 */
+  border-color: rgb(147, 112, 98); /* 활성화 상태에서 경계선 색상 */
+}
+
+/* 아이콘 색상 */
+.page-item .page-link .fa {
+  color: rgb(147, 112, 98); /* 아이콘 색상 */
+}
+
+
 
 @media (max-width: 580px) {
   .ingredient-bar {

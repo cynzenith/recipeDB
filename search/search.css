@@ -34,9 +34,9 @@ body {
 }
 
 .sub-ingredient p {
-  font-weight: normal;
+  font-weight: 1000;
   font-family: 'Noto Serif KR', serif, Helvetica, 'Helvetica Neue', Arial;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   line-height: 1rem;
   letter-spacing: 0px;
   text-align: center;
@@ -47,7 +47,7 @@ body {
 
 .custom-search-form {
   width: 60%; /* 폼 넓이 80% 설정 */
-  margin: 20px 0 50px 22%; /* 가운데 정렬을 위한 마진 설정, 왼쪽 마진을 20%로 설정하여 오른쪽으로 치우침 */
+  margin: 20px 0 10px 22%; /* 가운데 정렬을 위한 마진 설정, 왼쪽 마진을 20%로 설정하여 오른쪽으로 치우침 */
 }
 
 .custom-search-form input.form-control {
@@ -189,3 +189,14 @@ body {
 #recipe-board {
     display: none;
 }
+
+.search-examples {
+    margin: 10px 0 10px 24%; /* 가운데 정렬을 위한 마진 설정, 왼쪽 마진을 20%로 설정하여 오른쪽으로 치우침 */
+    color: rgb(147, 112, 98);
+}
+
+.example-title {
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
