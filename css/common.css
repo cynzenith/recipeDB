@@ -91,3 +91,30 @@ html, body {
 .nav-menu-style:hover {
     color: rgb(191, 145, 126);
 }
+@media (max-width: 800px) {
+    .nav-menu {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .nav-menu a {
+      flex: 1 0 45%; /* 각 링크가 화면의 절반을 차지하도록 */
+      margin: 0px;
+      text-align: center; /* 텍스트를 가운데 정렬 */
+    }
+  }
+  
+  @media (max-width: 580px) {
+    .nav-menu-style {
+      font-size: 13px;
+    }
+  }
+  @media (max-width: 430px) {
+    .nav-menu-style {
+      font-size: 12px;
+    }
+    .user-action a:not(:first-child),
+    .user-action span {
+      display: none;
+    }
+  }
+  
