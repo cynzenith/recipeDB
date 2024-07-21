@@ -54,6 +54,7 @@ const render = (type) => {
                     <img src="${item.ATT_FILE_NO_MAIN}" class="card-img-top" alt="사진 설명">
                     <div class="card-body">
                         <p class="card-text">${item.RCP_NM}</p>
+                        <span class="tooltip-text">${item.RCP_NM}</span>
                     </div>
                 </div>
             </div>
@@ -98,12 +99,12 @@ const displayErrorMessage = (message, type) => {
 
 // 순차적으로 레시피를 호출하는 함수
 const fetchAllRecipes = async () => {
-    await getRecipe("토마토", "tomato");
-    await getRecipe("감자", "potato");
-    await getRecipe("고구마", "sweetPotato");
     await getRecipe("닭가슴살", "chickenBreast");
-    await getRecipe("두부", "beanCurd");
     await getRecipe("단호박", "sweetPumpkin");
+    // await getRecipe("두부", "beanCurd");
+    // await getRecipe("고구마", "sweetPotato");
+    // await getRecipe("감자", "potato");
+    // await getRecipe("토마토", "tomato");
 }
 
 // 페이지 로드 시 레시피를 순차적으로 호출

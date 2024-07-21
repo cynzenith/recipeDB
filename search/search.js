@@ -7,11 +7,9 @@ let endIdx = '10';
 let recipes = [];
 let selectedIngredients = [];
 
-
-
 // 전체 레시피 url
 let url_object = new URL(
-  `https://charming-cactus-400740.netlify.app/api/${API_KEY}/${serviceId}/${dataType}/${startIdx}/${endIdx}/RCP_PAT2=밥`
+  `https://charming-cactus-400740.netlify.app/api/${API_KEY}/${serviceId}/${dataType}/${startIdx}/${endIdx}/RCP_NM=가`
 );
 
 const RecipeTypes = document.querySelectorAll('.RecipeTypes button'); // console.log(RecipeTypes)
@@ -31,9 +29,18 @@ const recipeByKeyword = async() => {
   console.log(keyword);
   url_object = new URL(`https://charming-cactus-400740.netlify.app/api/${API_KEY}/${serviceId}/${dataType}/${startIdx}/${endIdx}/RCP_NM=${keyword}`);
   page = 1
-  await getRecipes()
-  searchInput.value = "";
+  await getRecipes().then(() => {
+    $('#recipe-board').fadeIn('slow'); // 검색 결과를 가져온 후 #recipe-board를 표시
+});
+searchInput.value = "";
 };
+
+function handleKeyDown(event) {
+    if (event.key === 'Enter') {
+        event.preventDefault(); // 폼 제출 방지
+        recipeByKeyword(); // 검색 함수 호출
+    }
+}    
 
 // 카테고리 검색(1) : 요리 종류 ['반찬', '국&찌개', '후식', '일품', '밥', '기타']
 const getRecipeByRecipeType = async event => {
@@ -89,13 +96,6 @@ const getRecipeByKeyword = async () => {
   );
   await getRecipes();
 };
-
-function handleKeyDown(event) {
-  if (event.key === 'Enter') {
-    event.preventDefault(); // 폼 제출을 방지합니다.
-    getRecipeByKeyword();
-  }
-}
 
 // url를 바탕으로 레시피 데이터를 가져오는 함수
 const getRecipes = async () => {

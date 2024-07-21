@@ -16,13 +16,27 @@ body {
 /* -----------------메인-------------------- */
 .div-ingredient {
     display: none; /* 초기 로딩 시 숨기기 */
+    /* border : 1px solid #000; */
+    padding-bottom: 50px;
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
 }
+
+/* 짝수번째 .div-ingredient 배경색 설정 */
+.div-ingredient:nth-child(even) {
+    background-color: #f4f0ef;
+}
+
 
 /* .sub-ingredient와 .card 관련 스타일 */
 .sub-ingredient {
     color: rgb(147, 112, 98);
     text-align: center;
-    margin-top: 100px;
+    padding-top: 40px;
     margin-bottom: 30px;
 }
 
@@ -56,22 +70,53 @@ body {
 
 .card-img-top {
     width: 100%; /* 이미지가 카드의 너비를 가득 채우게 함 */
-    height: 250px; /* 고정된 높이로 설정 */
+    height: 200px; /* 고정된 높이로 설정 */
     object-fit: cover; /* 비율 유지하면서 크기에 맞게 이미지 자름 */
 }
 
 .card-body {
-    padding: 20px; /* 내부 여백 */
     text-align: center; /* 가운데 정렬 */
     background-color: #ffffff; /* 부드러운 배경색 */
     border-top: 1px solid #ddd; /* 카드 상단에 얇은 선 추가 */
     border-radius: 0 0 8px 8px; /* 하단 모서리 둥글게 */
     transition: background-color 0.3s, box-shadow 0.3s; /* 배경색과 그림자 애니메이션 */
+    text-overflow: ellipsis; /* 넘치는 내용은 '...'으로 표시 */
+    overflow: hidden; /* 넘치는 내용 숨기기 */
+    white-space: nowrap; /* 줄바꿈하지 않고 한 줄로 표시 */
+    position: relative; /* 툴팁 위치 설정을 위해 추가 */
 }
 
-.card-body:hover {
-    background-color: #f1f1f1; /* 호버 시 배경색 변화 */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* 호버 시 그림자 강조 */
+.card-body:hover .tooltip-text {
+    visibility: visible; /* 마우스를 올리면 툴팁 보이기 */
+    opacity: 1; /* 툴팁 투명도 설정 */
+}
+
+.tooltip-text {
+    visibility: hidden; /* 기본적으로 툴팁 숨기기 */
+    background-color: black; /* 툴팁 배경색 */
+    color: #fff; /* 툴팁 텍스트 색 */
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute; /* 툴팁 위치 절대값 */
+    z-index: 1;
+    bottom: 125%; /* 툴팁을 텍스트 상단에 위치 */
+    left: 50%;
+    margin-left: -60px;
+    width: 120px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%; /* 툴팁 아래쪽에 삼각형 추가 */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
 }
 
 .card-text {
@@ -79,12 +124,12 @@ body {
     text-overflow: ellipsis; /* 넘치는 내용은 '...'으로 표시 */
     overflow: hidden; /* 넘치는 내용 숨기기 */
     white-space: nowrap; /* 내용이 한 줄로 유지되도록 설정 */
-    font-size: 14px; /* 폰트 크기 조정 */
+    font-size: 13px; /* 폰트 크기 조정 */
     color: #333; /* 텍스트 색상 */
 }
 
 .grid-img {
-    width: 80%; /* 컨테이너의 80% 너비 설정 */
+    width: 60%; /* 컨테이너의 80% 너비 설정 */
     margin: 0 auto !important; /* 가로 중앙 정렬 */
 }
 

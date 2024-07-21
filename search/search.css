@@ -42,12 +42,12 @@ body {
   text-align: center;
   font-weight: 500;
   /* margin-top: 16px; */
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .custom-search-form {
-  width: 80%; /* 폼 넓이 80% 설정 */
-  margin: 20px auto; /* 가운데 정렬을 위한 마진 설정 */
+  width: 60%; /* 폼 넓이 80% 설정 */
+  margin: 20px 0 50px 22%; /* 가운데 정렬을 위한 마진 설정, 왼쪽 마진을 20%로 설정하여 오른쪽으로 치우침 */
 }
 
 .custom-search-form input.form-control {
@@ -61,16 +61,15 @@ body {
   font-weight: 600;
 }
 
-.ingredient-bar, .RecipeTypes {
+.ingredient-bar {
+  width: 640px;
   margin: 40px auto; /* 좌우 마진을 auto로 설정하여 가운데 정렬 */
 
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-wrap: wrap;
 }
 
-.ingredient-bar button, .RecipeTypes button {
+.ingredient-bar button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,12 +164,6 @@ body {
 
 }
 
-.pagination {
-  display: flex;
-  justify-content: center; 
-  margin-top: 20px; 
-}
-
 @media (max-width: 580px) {
   .ingredient-bar {
     width: 330px;
@@ -191,4 +184,8 @@ body {
     height: 25px;
     font-size: 10px;
   }
+}
+
+#recipe-board {
+    display: none;
 }
