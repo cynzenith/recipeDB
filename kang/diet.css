@@ -5117,7 +5117,7 @@ fieldset:disabled .btn {
   --bs-list-group-active-bg: rgb(191, 145, 126);
   --bs-list-group-active-border-color: rgb(191, 145, 126);
   display: flex;
-  flex-direction: column;
+  flex-direction: row !important;
   padding-left: 0;
   margin-bottom: 0;
   border-radius: var(--bs-list-group-border-radius);
