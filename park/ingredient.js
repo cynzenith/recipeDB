@@ -2,16 +2,12 @@ const API_KEY = `7109179c29414b97985b`;
 const serviceId = 'COOKRCP01';
 const dataType = 'json';
 let startIdx = '1';
-let endIdx = '5';
+let endIdx = '6';
 
 let recipes = [];
 let selectedIngredients = [];
 
 let totalResults = 0;
-let page = 1
-const pageSize = 10
-const groupSize = 5
-
 
 // 전체 레시피 url
 let url_object = new URL(
@@ -47,9 +43,6 @@ function handleKeyDown(event) {
 // url를 바탕으로 레시피 데이터를 가져오는 함수
 const getRecipes = async () => {
   try {
-    url_object.searchParams.set('page', page)  // url = &page=${page}
-    url_object.searchParams.set('pageSize', pageSize)  // url = &pageSize=${pageSize}
-
     const response = await fetch(url_object); // API 호출
     const data = await response.json(); // JSON 데이터 파싱
 
@@ -60,7 +53,6 @@ const getRecipes = async () => {
     console.log('recipes 결과', recipes);
 
     render(); // 화면에 레시피 데이터 렌더링
-    paginationRender()
 
   } catch (error) {
     console.error('Error fetching recipes:', error); // 오류 콘솔 출력
@@ -139,41 +131,6 @@ const openSearchBox = () => {
     inputArea.style.display = 'inline';
   }
 };
-
-const paginationRender=() => {
-  const totalPages = Math.ceil(totalResults / pageSize)
-  const pageGroup = Math.ceil(page / groupSize)
-  let lastPage = pageGroup * groupSize    // lastPage -> firstPage
-  // 마지막 페이지그룹이 그룹사이즈보다 작다? lastPage = totalPages
-  if(lastPage > totalPages){
-      lastPage = totalPages
-  }
-  let firstPage = lastPage - (groupSize - 1) <=0? 1: lastPage - (groupSize - 1);   
-
-  let visiblePages = groupSize;
-  if (totalPages <= groupSize || (lastPage - firstPage + 1) < groupSize) {
-      visiblePages = Math.min(totalPages, groupSize);
-      if (lastPage - firstPage + 1 < visiblePages) {
-          lastPage = firstPage + visiblePages - 1;
-      }
-  }
-
-  let paginationHTML = '';
-  paginationHTML += `${page === 1 ? '' : `<li class="page-item" onclick="moveToPage(1)"><a class="page-link">&laquo;</a></li>`}`;
-  paginationHTML += `${page === 1 ? '' : `<li class="page-item" onclick="moveToPage(${page - 1})"><a class="page-link">&lt;</a></li>`}`;
-  for (let i = firstPage; i <= lastPage; i++) {
-      paginationHTML += `<li class="page-item ${i === page ? 'active' : ''}" onclick="moveToPage(${i})"><a class="page-link">${i}</a></li>`;
-  }
-  paginationHTML += `${page === totalPages ? '' : `<li class="page-item" onclick="moveToPage(${page + 1})"><a class="page-link">&gt;</a></li>`}`;
-  paginationHTML += `${page === totalPages ? '' : `<li class="page-item" onclick="moveToPage(${totalPages})"><a class="page-link">&raquo;</a></li>`}`;
-  document.querySelector('.pagination').innerHTML = paginationHTML;
-}
-
-const moveToPage=(pageNum) => {
-  // console.log('moveToPage'+pageNum)
-  page=pageNum
-  getRecipes()
-}
 
 getRecipes();
 // getRecipesName()
