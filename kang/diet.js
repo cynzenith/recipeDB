@@ -1,6 +1,6 @@
 // open api 주소 : https://www.foodsafetykorea.go.kr/api/openApiInfo.do?menu_grp=MENU_GRP31&menu_no=661&show_cnt=10&start_idx=1&svc_no=COOKRCP01
 
-const API_KEY = '4ea57cfaa61b4f4c95c3';
+const API_KEY = '62fc00364bd146588740';
 const originAddress = `https://openapi.foodsafetykorea.go.kr/api/${API_KEY}/COOKRCP01/json`;
 let arrRecipe = [];
 // https://openapi.foodsafetykorea.go.kr/api/4ea57cfaa61b4f4c95c3/COOKRCP01/json/37/48/ 전체가 나오는 오류있음

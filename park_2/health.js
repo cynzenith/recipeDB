@@ -1,4 +1,4 @@
-const API_KEY = "4ea57cfaa61b4f4c95c3";
+const API_KEY = "62fc00364bd146588740";
 const originAddress = `https://charming-cactus-400740.netlify.app/api/${API_KEY}/COOKRCP01/json`;
 const firstItem = 1;
 const lastItem = 12;
