@@ -103,8 +103,8 @@ const fetchAllRecipes = async () => {
     await getRecipe("단호박", "sweetPumpkin");
     await getRecipe("두부", "beanCurd");
     await getRecipe("고구마", "sweetPotato");
-    await getRecipe("감자", "potato");
-    await getRecipe("토마토", "tomato");
+    // await getRecipe("감자", "potato");
+    // await getRecipe("토마토", "tomato");
 }
 
 // 페이지 로드 시 레시피를 순차적으로 호출
