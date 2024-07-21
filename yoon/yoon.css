@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200..900&display=swap');
+* {
+  font-family: 'Noto Serif KR', serif;
+}
+
+.recipe-board {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.recipe {
+  border: 1px solid #e4e4e4;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  width: 300px;
+  background: #f0f0f0;
+  box-shadow: rgba(0, 0, 0, 0.3) 2.4px 2.4px 3.2px;
+  transition: transform 0.3s ease;
+}
+
+.recipe:hover {
+  transform: translateY(-10px);
+}
+
+.recipe h2 {
+  margin-top: 0;
+  font-size: 1.2rem;
+}
+
+.recipe img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.recipe p {
+  margin: 5px 0;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: blue;
+}
+
+.nutrition-box > div {
+  display: flex;
+  align-items: center;
+}
+.nutrition-box input {
+  margin: 0.4rem;
+}
+.nutrition-box h4 {
+  padding-right: 3rem;
+}
+.nutrition-box {
+  display: flex; /* Flexbox 레이아웃 사용 */
+  flex-wrap: wrap;
+  margin: 7px;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+.nutrition-menus > a {
+  font-weight: 550;
+  letter-spacing: 1px;
+  font-size: 19px;
+  text-decoration: none;
+  padding-right: 10px;
+  margin: 10px;
+  display: flex;
+  justify-content: space-around;
+  color: black;
+}
+
+.eng-check div,
+.fat-check div,
+.na-check div,
+.pro-check div {
+  font-weight: 600;
+}
+
+.eng-check input,
+.na-check input,
+.fat-check input,
+.pro-check input {
+  zoom: 1.5;
+}
+.eng-check div,
+.eng-check input {
+  display: none;
+  font-size: 18px;
+}
+.eng-check > div {
+  display: flex;
+}
+.fat-check div,
+.fat-check input {
+  display: none;
+  font-size: 18px;
+}
+.fat-check > div {
+  display: flex;
+}
+.na-check div,
+.na-check input {
+  display: none;
+  font-size: 18px;
+}
+.na-check > div {
+  display: flex;
+}
+.pro-check div,
+.pro-check input {
+  display: none;
+  font-size: 18px;
+}
+.pro-check > div {
+  display: flex;
+}
+
+.eng-check input,
+.eng-check div,
+.fat-check input,
+.fat-check div,
+.na-check input,
+.na-check div,
+.pro-check input,
+.pro-check div {
+  margin: 0 5px;
+}
+
+.nutrition-menus > a.clicked {
+  color: rgb(149, 106, 89);
+}
+
+.category-font {
+  font-weight: 600;
+}
+
+div.recipe img {
+  cursor: pointer;
+}
+
+/* pagination */
+.page-area {
+  display: flex;
+  justify-content: center;
+}
+.pagination li a {
+  color: black;
+  border: none;
+}
+
+/* carousel part */
+.carousel {
+  width: 1000px;
+  height: 360px;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  left: 11%;
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    display: none;
+  }
+  .recipe {
+    width: 100%;
+  }
+  h2 {
+    text-align: center;
+  }
+  .recipe img {
+    padding-left: 50px;
+  }
+}

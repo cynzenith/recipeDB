@@ -1,0 +1,175 @@
+/* --------------------공통 header CSS---------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  font-family: Arial, sans-serif; /* 원하는 기본 글꼴 설정 */
+}
+/* nav menu */
+.active-nav {
+  color: rgb(149, 106, 89);
+  border-bottom: 2px solid rgb(147, 112, 98);
+}
+
+/* header-banner */
+.header-banner {
+  padding: 8px 14px;
+  background: rgb(147, 112, 98);
+}
+.header-banner-content {
+  color: white;
+  text-align: center;
+  font-family: 'Noto Sans KR', Helvetica, 'Helvetica Neue', Arial, 'sans-serif';
+  font-size: 12px;
+}
+.header-banner a {
+  text-decoration: none;
+}
+
+/* logo & user action */
+.header-logo {
+  padding-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0px;
+}
+.logo {
+  width: 150px;
+  height: auto;
+}
+.user-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 1px solid black; */
+}
+.user-action a,
+.user-action span {
+  margin: 0 5px;
+}
+
+/* nav-menu */
+.nav-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 36px 0px 0px 0px;
+}
+.nav-menu a {
+  text-decoration: none;
+}
+.nav-menu a {
+  padding: 0px 15px 10px 15px;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  font-family: 'Noto Sans KR', Helvetica, 'Helvetica Neue', Arial, 'sans-serif';
+  color: black;
+  font-size: 16px;
+  font-weight: 550;
+
+  letter-spacing: 1px;
+  line-height: 20px;
+  text-align: center;
+}
+/* .nav-menu-style {
+  padding: 0px 15px 10px 15px;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  font-family: 'Noto Sans KR', Helvetica, 'Helvetica Neue', Arial, 'sans-serif';
+  color: black;
+  font-size: 16px;
+  font-weight: 550;
+
+  letter-spacing: 1px;
+  line-height: 20px;
+  text-align: center;
+} */
+
+/* border-bottom: 2px solid rgb(147, 112, 98); */
+.nav-menu a:hover {
+  color: rgb(191, 145, 126);
+}
+
+.active-nav {
+  color: rgb(149, 106, 89);
+  border-bottom: 2px solid rgb(147, 112, 98);
+}
+
+.div-line {
+  margin: 20px 0px;
+  border: 1px solid #ebebeb;
+}
+
+/* ------------------------------------------------ */
+footer {
+  width: 100%;
+  font-size: 12px;
+}
+footer nav {
+  width: 100%;
+  display: flex;
+  padding: 8px;
+  align-items: center;
+  background-color: rgb(238, 238, 238);
+}
+footer nav > ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+}
+footer .footer-info {
+  margin-top: 10px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+footer address {
+  margin: 0;
+  color: #757575;
+}
+footer address > div {
+  margin: 5px 0;
+}
+footer address > div > p {
+  display: inline-block;
+  margin: 0 10px 0 0;
+}
+
+.footer-logo {
+  align-self: flex-end;
+  margin-top: 10px;
+  text-align: right;
+  color: #757575;
+}
+.footer-logo > h5,
+.footer-logo > .h5 {
+  font-size: 1rem;
+  margin-bottom: 0;
+  color: rgb(147, 112, 98);
+}
+.footer-logo > p {
+  margin: 0;
+}
+
+@media (max-width: 580px) {
+  .nav-menu-style {
+    font-size: 13px;
+  }
+}
+@media (max-width: 430px) {
+  .nav-menu-style {
+    font-size: 12px;
+  }
+  .user-action a:not(:first-child),
+  .user-action span {
+    display: none;
+  }
+}

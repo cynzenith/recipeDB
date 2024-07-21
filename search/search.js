@@ -29,6 +29,9 @@ const recipeByKeyword = async() => {
   console.log(keyword);
   url_object = new URL(`https://charming-cactus-400740.netlify.app/api/${API_KEY}/${serviceId}/${dataType}/${startIdx}/${endIdx}/RCP_NM=${keyword}`);
   page = 1
+  // .div-size 요소 숨기기
+  document.querySelector('.div-size').style.display = 'none';
+  
   await getRecipes().then(() => {
     $('#recipe-board').fadeIn('slow'); // 검색 결과를 가져온 후 #recipe-board를 표시
 });
