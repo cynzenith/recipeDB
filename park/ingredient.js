@@ -2,11 +2,15 @@ const API_KEY = `7109179c29414b97985b`;
 const serviceId = 'COOKRCP01';
 const dataType = 'json';
 let startIdx = '1';
-let endIdx = '10';
+let endIdx = '5';
 
 let recipes = [];
 let selectedIngredients = [];
 
+let totalResults = 0;
+let page = 1
+const pageSize = 10
+const groupSize = 5
 
 
 // 전체 레시피 url
@@ -20,20 +24,7 @@ const Ingredients = document.querySelectorAll('.ingredient-bar button'); // cons
 RecipeTypes.forEach(RecipeType =>
   RecipeType.addEventListener('click', event => getRecipeByRecipeType(event))
 );
-Ingredients.forEach(Ingredient =>
-  Ingredient.addEventListener('click', event => getRecipeByIngredient(event))
-);
 
-//  키워드 검색
-const recipeByKeyword = async() => {
-  const searchInput = document.getElementById("search-input");
-  const keyword = searchInput.value;
-  console.log(keyword);
-  url_object = new URL(`https://charming-cactus-400740.netlify.app/api/${API_KEY}/${serviceId}/${dataType}/${startIdx}/${endIdx}/RCP_NM=${keyword}`);
-  page = 1
-  await getRecipes()
-  searchInput.value = "";
-};
 
 // 카테고리 검색(1) : 요리 종류 ['반찬', '국&찌개', '후식', '일품', '밥', '기타']
 const getRecipeByRecipeType = async event => {
@@ -42,50 +33,6 @@ const getRecipeByRecipeType = async event => {
   console.log(RecipeType);
   url_object = new URL(
     `https://charming-cactus-400740.netlify.app/api/${API_KEY}/${serviceId}/${dataType}/${startIdx}/${endIdx}/RCP_PAT2=${encodedRecipeType}`
-  );
-  await getRecipes();
-};
-
-// 카테고리 검색(2) : 요리 재료 ['양파', '물', '설탕', '소금', '참기름', '식초', '당근', '마늘', '간장', '홍고추', '통깨', '후추']
-const getRecipeByIngredient = async event => {
-  const Ingredient = event.target.textContent;
-  const button = event.target;
-
-  // 이미 선택된 재료인지 확인
-  if (selectedIngredients.includes(Ingredient)) {
-    // 이미 선택된 재료라면 배열에서 제거하고 배경색을 white로 변경
-    selectedIngredients = selectedIngredients.filter(
-      item => item !== Ingredient
-    );
-    button.style.backgroundColor = 'white';
-  } else {
-    // 선택되지 않은 재료라면 배열에 추가하고 배경색을 베이지로 변경
-    selectedIngredients.push(Ingredient);
-    button.style.backgroundColor = 'beige';
-  }
-  console.log(selectedIngredients);
-
-  // 선택된 재료가 없는 경우 URL을 초기화
-  if (selectedIngredients.length === 0) {
-    url_object = new URL(
-      `https://charming-cactus-400740.netlify.app/api/${API_KEY}/${serviceId}/${dataType}/${startIdx}/${endIdx}/RCP_NM=가`
-    );
-  } else {
-    // 선택된 재료를 기반으로 URL 생성
-    const encodedIngredients = selectedIngredients.join(',');
-    url_object = new URL(
-      `https://charming-cactus-400740.netlify.app/api/${API_KEY}/${serviceId}/${dataType}/${startIdx}/${endIdx}/RCP_NM=${encodedIngredients}`
-    );
-  }
-
-  await getRecipes();
-};
-
-// [검색]을 통해 특정 메뉴의 레시피 데이터를 가져오는 함수
-const getRecipeByKeyword = async () => {
-  const recipeName = document.getElementById('search-input').value;
-  url_object = new URL(
-    `https://charming-cactus-400740.netlify.app/api/${API_KEY}/${serviceId}/${dataType}/${startIdx}/${endIdx}/RCP_NM=${recipeName}`
   );
   await getRecipes();
 };
@@ -100,16 +47,21 @@ function handleKeyDown(event) {
 // url를 바탕으로 레시피 데이터를 가져오는 함수
 const getRecipes = async () => {
   try {
+    url_object.searchParams.set('page', page)  // url = &page=${page}
+    url_object.searchParams.set('pageSize', pageSize)  // url = &pageSize=${pageSize}
+
     const response = await fetch(url_object); // API 호출
     const data = await response.json(); // JSON 데이터 파싱
 
-    total_count = data.COOKRCP01.total_count; // 총 레시피 수
-    console.log('total_count 결과 : ', total_count);
+    totalResults = data.COOKRCP01.total_count; // 총 레시피 수
+    console.log('total_count 결과 : ', totalResults);
 
     recipes = data.COOKRCP01.row; // 레시피 데이터 저장
     console.log('recipes 결과', recipes);
 
     render(); // 화면에 레시피 데이터 렌더링
+    paginationRender()
+
   } catch (error) {
     console.error('Error fetching recipes:', error); // 오류 콘솔 출력
     displayErrorMessage(error.message); // 오류 메시지를 화면에 출력
@@ -187,6 +139,41 @@ const openSearchBox = () => {
     inputArea.style.display = 'inline';
   }
 };
+
+const paginationRender=() => {
+  const totalPages = Math.ceil(totalResults / pageSize)
+  const pageGroup = Math.ceil(page / groupSize)
+  let lastPage = pageGroup * groupSize    // lastPage -> firstPage
+  // 마지막 페이지그룹이 그룹사이즈보다 작다? lastPage = totalPages
+  if(lastPage > totalPages){
+      lastPage = totalPages
+  }
+  let firstPage = lastPage - (groupSize - 1) <=0? 1: lastPage - (groupSize - 1);   
+
+  let visiblePages = groupSize;
+  if (totalPages <= groupSize || (lastPage - firstPage + 1) < groupSize) {
+      visiblePages = Math.min(totalPages, groupSize);
+      if (lastPage - firstPage + 1 < visiblePages) {
+          lastPage = firstPage + visiblePages - 1;
+      }
+  }
+
+  let paginationHTML = '';
+  paginationHTML += `${page === 1 ? '' : `<li class="page-item" onclick="moveToPage(1)"><a class="page-link">&laquo;</a></li>`}`;
+  paginationHTML += `${page === 1 ? '' : `<li class="page-item" onclick="moveToPage(${page - 1})"><a class="page-link">&lt;</a></li>`}`;
+  for (let i = firstPage; i <= lastPage; i++) {
+      paginationHTML += `<li class="page-item ${i === page ? 'active' : ''}" onclick="moveToPage(${i})"><a class="page-link">${i}</a></li>`;
+  }
+  paginationHTML += `${page === totalPages ? '' : `<li class="page-item" onclick="moveToPage(${page + 1})"><a class="page-link">&gt;</a></li>`}`;
+  paginationHTML += `${page === totalPages ? '' : `<li class="page-item" onclick="moveToPage(${totalPages})"><a class="page-link">&raquo;</a></li>`}`;
+  document.querySelector('.pagination').innerHTML = paginationHTML;
+}
+
+const moveToPage=(pageNum) => {
+  // console.log('moveToPage'+pageNum)
+  page=pageNum
+  getRecipes()
+}
 
 getRecipes();
 // getRecipesName()
